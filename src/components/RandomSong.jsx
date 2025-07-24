@@ -2,10 +2,13 @@ import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { getRandomSongs } from "../services/songService";
 import { nameArtist } from "../services/artistService";
+import { useNavigate } from "react-router-dom";
 
 const RandomSong = ({ limit = 10 }) => {
   const [songs, setSongs] = useState([]);
   const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function loadSongsAndArtists() {
       const randomSong = await getRandomSongs(limit);
@@ -31,10 +34,13 @@ const RandomSong = ({ limit = 10 }) => {
       <Row gutter={[1, 1]}>
         {songs.map((item, index) => (
           <Col key={index} span={12}>
-            <div className="h-[70px] flex items-center gap-2">
+            <div
+              className="h-[70px] flex items-center gap-2"
+              onClick={() => navigate(`/song/${item.songId}`)}
+            >
               <div className="flex items-center">
                 <img
-                  className="w-[60px] h-[60px] object-cover rounded"
+                  className="w-[60px] h-[60px] object-cover rounded cursor-pointer"
                   src={item.coverUrl}
                   alt=""
                 />

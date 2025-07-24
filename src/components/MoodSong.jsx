@@ -3,10 +3,12 @@ import { getRandomMoodSong } from "../services/songService";
 import { nameArtist } from "../services/artistService";
 import { List, Button } from "antd";
 import { PlayCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MoodSong({ limit = 5 }) {
   const [songs, setSongs] = useState([]);
   const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadSongsAndArtists() {
@@ -44,7 +46,10 @@ export default function MoodSong({ limit = 5 }) {
             artists.find((a) => a.id === item.artistId)?.name || "Không rõ";
 
           return (
-            <List.Item>
+            <List.Item
+              onClick={() => navigate(`/song/${item.songId}`)}
+              className="cursor-pointer"
+            >
               <div className="relative group w-[152px] h-[152px] cursor-pointer rounded-md overflow-hidden">
                 <img
                   className="w-full h-full object-cover group-hover:opacity-70 transition"

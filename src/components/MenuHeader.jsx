@@ -3,6 +3,7 @@ import { Dropdown, Space } from "antd";
 import ModalLogin from "./ModalLogin";
 import ModalSign from "./ModalSign";
 import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const MenuHeader = () => {
   const { user, logout } = useAuth();
@@ -23,7 +24,7 @@ const MenuHeader = () => {
       <div className="menuheader">
         <ul className="menuheader-list">
           <li>
-            <a href="">123</a>
+            <Link to="/">123</Link>
           </li>
           <li>
             <a href="">Khám phá</a>

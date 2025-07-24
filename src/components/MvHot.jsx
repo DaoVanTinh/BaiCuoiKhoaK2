@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { getMVHot } from "../services/songService";
 import { nameArtist } from "../services/artistService";
 import { PlayCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const MvHot = ({ limit = 10 }) => {
   const [songs, setSongs] = useState([]);
   const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadSongsAndArtists() {
@@ -42,7 +44,10 @@ const MvHot = ({ limit = 10 }) => {
       >
         {top2.map((item, index) => (
           <Col span={12} key={index}>
-            <div className="relative h-[235px] overflow-hidden rounded-lg shadow-md group cursor-pointer">
+            <div
+              className="relative h-[235px] overflow-hidden rounded-lg shadow-md group cursor-pointer"
+              onClick={() => navigate(`/song/${item.songId}`)}
+            >
               <img
                 src={item.coverUrl}
                 alt={item.title}
@@ -70,7 +75,10 @@ const MvHot = ({ limit = 10 }) => {
         ))}
         {rest.map((item, index) => (
           <Col span={6} key={index}>
-            <div className="group relative cursor-pointer">
+            <div
+              className="group relative cursor-pointer"
+              onClick={() => navigate(`/song/${item.songId}`)}
+            >
               <img
                 src={item.coverUrl}
                 alt={item.title}

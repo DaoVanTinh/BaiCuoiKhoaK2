@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getBXHVN, getRandomVietnamSongs } from "../services/songService";
 import { nameArtist } from "../services/artistService";
-import { Col, Row } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function BXHVN({ limit = 10 }) {
   const [songs, setSongs] = useState([]);
   const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadSongsAndArtists() {
@@ -34,10 +35,13 @@ export default function BXHVN({ limit = 10 }) {
             <img
               src={item.coverUrl}
               alt={item.title}
-              className="w-[100px] h-[100px] mr-3"
+              className="w-[100px] h-[100px] mr-3 cursor-pointer"
             />
             <div>
-              <p className="text-xl text-[rgba(0,0,0,0.88)] font-normal mb-1">
+              <p
+                className="text-xl text-[rgba(0,0,0,0.88)] font-normal mb-1 hover:text-blue-500 cursor-pointer"
+                onClick={() => navigate(`/song/${item.songId}`)}
+              >
                 {item.title}
               </p>
               <p className="text-[13px] text-[#acacac] font-normal">
@@ -70,7 +74,10 @@ export default function BXHVN({ limit = 10 }) {
               </span>
 
               <div>
-                <p className="text-sm text-[rgba(0,0,0,0.88)] font-normal mb-1">
+                <p
+                  className="text-sm text-[rgba(0,0,0,0.88)] font-normal mb-1 hover:text-blue-500 cursor-pointer"
+                  onClick={() => navigate(`/song/${item.songId}`)}
+                >
                   {item.title}
                 </p>
                 <p className="text-[13px] text-[#acacac] font-normal">
