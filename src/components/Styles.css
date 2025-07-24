@@ -1,0 +1,66 @@
+@import "tailwindcss";
+/* root */
+.body {
+  padding: 0;
+  margin: 0;
+}
+.primarybutton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(46deg, #2f80ed 0%, #00aeef 100%);
+  border-radius: 4px;
+}
+
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-titletext: #2daaed;
+}
+
+/* Header */
+
+.menuheader {
+  display: flex;
+  margin: 0px 150px;
+  padding: 5px 0px;
+  justify-content: space-between;
+  height: 55px;
+  align-items: center;
+}
+
+.menuheader-list {
+  display: flex;
+  gap: 18px;
+}
+
+.menuheader-list li {
+  font-size: 14px;
+  color: #222222;
+  font-weight: 400;
+}
+
+.menuheader-ils {
+  display: flex;
+  gap: 18px;
+}
+
+.menuheader-ls {
+  display: flex;
+  gap: 18px;
+}
+
+.menuheader-search {
+  display: flex;
+}
+
+.menuheader-line {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menuheader-login {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 13.5px;
+}
