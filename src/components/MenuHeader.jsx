@@ -1,9 +1,11 @@
 import React from "react";
-import { Dropdown, Space } from "antd";
+import { Dropdown, Input, Space } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import ModalLogin from "./ModalLogin";
 import ModalSign from "./ModalSign";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Logo from "../assets/Logo.png";
 
 const MenuHeader = () => {
   const { user, logout } = useAuth();
@@ -22,12 +24,11 @@ const MenuHeader = () => {
   return (
     <div className="fixed w-full z-5 bg-white border-b-1 border-[#dadada] border-solid">
       <div className="menuheader">
-        <ul className="menuheader-list">
+        <ul className="menuheader-list flex items-center">
           <li>
-            <Link to="/">123</Link>
-          </li>
-          <li>
-            <a href="">Khám phá</a>
+            <Link to="/">
+              <img src={Logo} alt="Logo" className="h-10 w-auto" />
+            </Link>
           </li>
           <li>
             <a href="">Bài hát</a>
@@ -52,15 +53,16 @@ const MenuHeader = () => {
 
         <div className="menuheader-ils flex items-center">
           <div className="menuheader-search">
-            <div className="menuheader-searchbox">i</div>
-            <input type="text" placeholder="Tìm kiếm" />
+            <Input addonBefore={<SearchOutlined />} placeholder="Tìm kiếm" />
           </div>
-          <div>A</div>
+          <img
+            src="https://stc-id.nixcdn.com/v11/images/header_new/ic_store.png"
+            alt="Logo"
+            className="w-[28px] h-[28px]"
+          />
           <div className="menuheader-line"></div>
-
           <div className="menuheader-ls flex items-center space-x-4">
             {user ? (
-              // ✅ Nếu đã đăng nhập
               <div className="text-[14px] text-[#000000] font-bold">
                 <Dropdown menu={{ items }}>
                   <a onClick={(e) => e.preventDefault()}>
@@ -71,7 +73,6 @@ const MenuHeader = () => {
                 </Dropdown>
               </div>
             ) : (
-              // ✅ Nếu chưa đăng nhập
               <>
                 <ModalLogin />
                 <div className="flex items-center text-[13.5px] text-white">

@@ -7,25 +7,9 @@ import NewSong from "./NewSong";
 import MvHot from "./MvHot";
 import RandomSong from "./RandomSong";
 import BXHVN from "./BXHVN";
+import BXHUS from "./BXHUS";
+import BXHJP from "./BXHJP";
 
-const style = { background: "#0092ff", padding: "8px 0" };
-const data = [
-  {
-    title: "Title 1",
-  },
-  {
-    title: "Title 2",
-  },
-  {
-    title: "Title 3",
-  },
-  {
-    title: "Title 4",
-  },
-  {
-    title: "Title 5",
-  },
-];
 const Container = () => {
   const [activeTab, setActiveTab] = useState("vn");
   return (
@@ -54,42 +38,47 @@ const Container = () => {
         <h2 className="text-[26px] text-(--color-titletext) mb-2">
           BXH BÀI HÁT
         </h2>
-        <div className="flex mb-4 w-full mb-5">
+        <div className="flex mb-5 w-full">
           <button
-            className={`pt-1 pb-1 w-1/3 rounded-l-4xl
-      ${
-        activeTab === "vn"
-          ? "bg-[#e74c3c] text-white"
-          : "bg-[#e5e5e5] text-[#333333]"
-      }`}
+            className={`pt-1 pb-1 w-1/3 rounded-l-4xl cursor-pointer
+            ${
+              activeTab === "vn"
+                ? "bg-[#e74c3c] text-white"
+                : "bg-[#e5e5e5] text-[#333333]"
+            }`}
             onClick={() => setActiveTab("vn")}
           >
             Việt Nam
           </button>
+
           <button
-            className={`pt-1 pb-1 w-1/3
-      ${
-        activeTab === "usuk"
-          ? "bg-[#e74c3c] text-white"
-          : "bg-[#e5e5e5] text-[#333333]"
-      }`}
+            className={`pt-1 pb-1 w-1/3 cursor-pointer
+            ${
+              activeTab === "usuk"
+                ? "bg-[#e74c3c] text-white"
+                : "bg-[#e5e5e5] text-[#333333]"
+            }`}
             onClick={() => setActiveTab("usuk")}
           >
             Âu Mỹ
           </button>
+
           <button
-            className={`pt-1 pb-1 w-1/3 rounded-r-4xl
-      ${
-        activeTab === "kpop"
-          ? "bg-[#e74c3c] text-white"
-          : "bg-[#e5e5e5] text-[#333333]"
-      }`}
+            className={`pt-1 pb-1 w-1/3 rounded-r-4xl cursor-pointer
+            ${
+              activeTab === "kpop"
+                ? "bg-[#e74c3c] text-white"
+                : "bg-[#e5e5e5] text-[#333333]"
+            }`}
             onClick={() => setActiveTab("kpop")}
           >
-            Hàn Quốc
+            Nhật Bản
           </button>
         </div>
-        <BXHVN />
+
+        {activeTab === "vn" && <BXHVN />}
+        {activeTab === "usuk" && <BXHUS />}
+        {activeTab === "kpop" && <BXHJP />}
       </div>
     </div>
   );

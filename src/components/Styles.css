@@ -56,6 +56,8 @@
 }
 
 .menuheader-line {
+  width: 1px;
+  height: 24px;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 

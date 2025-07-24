@@ -98,6 +98,28 @@ export async function getBXHVN(limit = 10) {
   return bxhVNsongs;
 }
 
+//BXHJP
+export async function getBXHJP(limit = 10) {
+  const allSongs = (await fetchSongs()) || []; 
+
+  const jpSongs = allSongs
+    .filter((s) => s.songId && s.songId.startsWith("song_jp")) 
+    .slice(0, limit);
+
+  return jpSongs;
+}
+
+//BXHUS
+export async function getBXHUS(limit = 10) {
+  const allSongs = (await fetchSongs()) || [];
+
+  const usSongs = allSongs
+    .filter((s) => s.songId && s.songId.startsWith("song_us"))
+    .slice(0, limit);
+
+  return usSongs;
+}
+
 //SongById
 export async function getSongById(songId) {
   const allSongs = await fetchSongs();
